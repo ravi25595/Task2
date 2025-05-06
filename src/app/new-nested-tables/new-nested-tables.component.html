@@ -1,0 +1,28 @@
+<mat-icon (click)="addGroup(0)">add</mat-icon>
+<mat-icon (click)="initialize()">clear</mat-icon>
+<mat-icon (click)="validateData()">done_outline</mat-icon>
+@for (group of data; track $index) {
+    <app-group [groupIndex]=$index [group]=group 
+        [trigger]=trigger
+        [inValid]=inValid
+        (deleteGroupEvent)="deleteGroup($event)" (addGroupEvent)="addGroup($event)"
+        >
+    </app-group>
+}
+
+<button (click)="stringAPIData()">API CALL</button>
+<button (click)="dataService.getPersonsByGroupId(2)">getPersonsByGroupId</button>
+<pre>
+    {{ stringifyData(APIData) }}
+</pre>
+<hr/>
+<pre>
+    {{ stringifyData(data) }}
+</pre>
+@for (group of APIData; track $index) {
+    {{ group }}
+}
+<hr/>
+<pre>
+    {{ stringifyData(dataService.persons) }}
+</pre>

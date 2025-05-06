@@ -1,0 +1,26 @@
+<button (click)="newLoadJson()"></button>
+<div class="container" id="container">
+    <div id="group" class="group">
+        <mat-icon id="delete" (click)="deleteGroup($event)">delete_forever</mat-icon>
+        <mat-icon id="add" (click)="addRecord($event)">add</mat-icon>
+        <mat-icon id="plusG" (click)="addGroup($event)">G</mat-icon>
+        <mat-icon id="plusN" (click)="addChildGroup($event)">N</mat-icon>
+        <div>
+        <table id="table">
+            <tr id="tableHeader">
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+            </tr>
+            <tr id="tableRecord" #tableRecord>
+                <td><input type="text" placeholder="Name" name="name"/><br><small></small></td>
+                <td><input type="email" placeholder="Email" name="email"/><br><small></small></td>
+                <td><input type="number" placeholder="Phone number" name="phone"/><br><small></small></td>
+                <td><mat-icon class="save" (click)="saveRow($event)">done</mat-icon></td>
+                <td><mat-icon class="delete" (click)="deleteRow($event)">delete_forever</mat-icon></td>
+            </tr>
+        </table>
+        <div id="docContainer"></div>
+        </div>
+    </div>
+</div>

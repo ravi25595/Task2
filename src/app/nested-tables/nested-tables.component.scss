@@ -1,0 +1,39 @@
+.container{
+    border: 1px solid black;
+    margin: 4px;
+}
+.group{
+    display: flex;
+    flex-direction: row;
+    margin: 8px;
+    padding: 8px;
+    border-radius: 4px;
+}
+table{
+    border: 1px solid black;
+}
+th{
+    text-align: start;
+}
+input{
+    padding: 8px;
+}
+button{
+    display: block;
+    height: 30px;
+}
+mat-icon{
+    color: #005cbb;
+    box-shadow: 0 0 5px black;
+    border-radius: 3px;
+    margin: 1px;
+}
+mat-icon:hover{
+    opacity: 0.7;
+}
+.inputError{
+    border-color: red;
+}
+small{
+    color: red;
+}

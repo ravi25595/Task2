@@ -1,0 +1,25 @@
+<div id="group">
+    <mat-icon (click)="deleteGroupElement()">delete_forever</mat-icon>
+    <mat-icon (click)="addRow()">add</mat-icon>
+    <mat-icon (click)="addGroupElement()">G</mat-icon>
+    <mat-icon (click)="addChildGroup()">N</mat-icon>
+    <div>
+        <app-table-row
+            [trigger]=trigger
+            inValid=hasErrors
+            [group]="group">
+        </app-table-row>
+        <div>
+            @for (group of group.docs; track $index) {
+                <app-group 
+                    [trigger]=trigger
+                    [inValid]=inValid
+                    [groupIndex]=$index 
+                    [group]=group 
+                    (deleteGroupEvent)="deleteGroup($event)"
+                    (addGroupEvent)="addGroup($event)">
+                </app-group>
+            }
+        </div>
+    </div>
+</div>

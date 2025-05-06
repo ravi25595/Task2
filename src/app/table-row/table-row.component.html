@@ -1,0 +1,62 @@
+<table>
+    <tr id="tableHeader">
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Subject</th>
+    </tr>
+    @for (record of group.records; track $index) {
+        <tr id="tableRecord" #tableRecord>
+            <td>
+                <input [ngClass]="trigger&&nameCtrl.errors?.['required'] ? 'error' : ''"
+                    placeholder="Name"
+                    [(ngModel)]=record.name name="name" #nameCtrl="ngModel" required />
+                @if (trigger) {
+                    @if(nameCtrl.errors?.['required']){
+                        <br><small>* Name is required.</small>
+                    }
+                }
+            </td>
+            <td>
+                <input [ngClass]="trigger&&(emailCtrl.errors?.['required'] || emailCtrl.errors?.['email']) ? 'error' : ''"
+                    placeholder="Email"
+                    [(ngModel)]=record.email name="email" #emailCtrl="ngModel" required email/>
+                @if (trigger) {
+                    @if(emailCtrl.errors?.['required']){
+                        <br><small>* Email is required.</small>
+                    }@else if (emailCtrl.errors?.['email']) {
+                        <br><small>* ! Invalid email address.</small>
+                    }
+                    
+                }
+            </td>
+            <td>
+                <input [ngClass]="trigger&&phoneCtrl.errors?.['required'] ? 'error' : ''"
+                    type="number"
+                    placeholder="Phone Number"
+                    [(ngModel)]=record.phone #phoneCtrl="ngModel" required/>
+                @if (trigger) {
+                    @if(phoneCtrl.errors?.['required']){
+                        <br><small>* Phone number is required.</small>
+                    }
+                }
+            </td>
+            <td>
+                <select [(ngModel)]="record.subject" #subjectCtrl="ngModel" [ngClass]="trigger&&subjectCtrl.errors?.['required']?'error' : ''"
+                    required>
+                    <option value='' disabled selected><pre>  Select Subject  </pre></option>
+                    @for (subject of subjects; track $index) {
+                        <option [value]="subject">{{subject}}</option>
+                    }
+                </select>
+                @if (trigger) {
+                    @if(subjectCtrl.errors?.['required']){
+                        <br><small>* Please select a subject.</small>
+                    }
+                }
+            </td>
+            <td><mat-icon class="save" (click)="saveRow($index)">done</mat-icon></td>
+            <td><mat-icon class="delete" (click)="deleteRow($index)">delete_forever</mat-icon></td>
+        </tr>
+    }
+</table>

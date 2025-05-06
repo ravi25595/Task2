@@ -1,0 +1,39 @@
+input{
+    padding: 8px;
+}
+.error{
+    border: 1px solid red;
+}
+mat-icon{
+    color: #005cbb;
+    box-shadow: 0 0 5px black;
+    border-radius: 3px;
+    margin: 1px;
+}
+mat-icon:hover{
+    opacity: 0.7;
+}
+.inputError{
+    border-color: red;
+}
+#group{
+    display: flex;
+    flex-direction: row;
+    margin: 8px;
+}
+table{
+    border: 1px solid black;
+}
+td{
+    vertical-align: top;
+}
+select{
+    width: 100%;
+    box-sizing: border-box;
+}
+small{
+    color: red;
+}
+select{
+    padding: 8px;
+}
