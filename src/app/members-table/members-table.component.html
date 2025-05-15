@@ -5,10 +5,10 @@
         <th>Phone</th>
         <th>Subject</th>
     </tr>
-    @for (record of group.records; track $index) {
+    @for (record of members; track $index) {
         <tr id="tableRecord" #tableRecord>
-            <td>
-                <input [ngClass]="trigger&&nameCtrl.errors?.['required'] ? 'error' : ''"
+            <td>{{record.id}}
+                <input
                     placeholder="Name"
                     [(ngModel)]=record.name name="name" #nameCtrl="ngModel" required />
                 @if (trigger) {
@@ -41,34 +41,22 @@
                     }
                 }
             </td>
-            <!-- <td>
-                <select [(ngModel)]="record.subject" 
-                    #subjectCtrl="ngModel" 
-                    [ngClass]="trigger&&subjectCtrl.errors?.['required']?'error' : ''"
-                    required multiple>
-                    <option value='' disabled selected><pre>  Select Subject  </pre></option>
-                    @for (subject of subjects; track $index) {
-                        <option [value]="subject">{{subject}}</option>
-                    }
-                </select>
-                @if (trigger) {
-                    @if(subjectCtrl.errors?.['required']){
-                        <br><small>* Please select a subject.</small>
-                    }
-                }
-            </td> -->
             <td>
-                <mat-select 
+                <mat-select placeholder="Select Subject"
                     multiple
-                    [(ngModel)]="record.subject">
+                    [(ngModel)]="record.subjects">
+                    <mat-option (click)="toggleSelectAll($index)" [value]="'__select_all__'"
+                        class="no-checkmark" disableRipple>
+                        <b>Select All</b>
+                    </mat-option>
                     @for (subject of subjects; track $index) {
                         <mat-option [value]="subject">{{ subject }}</mat-option>
                     }
                 </mat-select>
                 
             </td>
-            <td><mat-icon class="save" (click)="saveRow($index)">done</mat-icon></td>
-            <td><mat-icon class="delete" (click)="deleteRow($index)">delete_forever</mat-icon></td>
+            <td><button (click)="saveMember(record)"><mat-icon>done</mat-icon></button></td>
+            <td><button (click)="deleteRow(record)"><mat-icon>delete_forever</mat-icon></button></td>
         </tr>
     }
 </table>

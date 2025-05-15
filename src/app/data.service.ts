@@ -5,9 +5,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class DataService {
-  persons: any;
-  getPersonsByGroupId(id: number): any {
-    return this.http.get('https://localhost:7131/GetPersonsByGroupId?GroupId='+id)
+  getPersonsByGroupId(id: number) {
+    return this.http.get<any[]>('https://localhost:7131/GetPersonsByGroupId?GroupId='+id)
   }
   constructor(private http: HttpClient) {}
 
@@ -29,5 +28,20 @@ export class DataService {
 
     window.URL.revokeObjectURL(url);
   }
+  getGroupsByParentId(parentId: number) {
+    //console.log('getGroupsByParentId'+parentId)
+    return this.http.get<any[]>('https://localhost:7131/GetGroupsByParentId?ParentId='+parentId)
+  }
+  createGroupByParentId(parentId: number){
+    return this.http.post('https://localhost:7131/InsertGroup?ParentID='+parentId,null)
+  }
+  deleteGroupById(id: any) {
+    return this.http.delete('https://localhost:7131/DeleteGroupById?id='+id)
+  }
+  getAllGroups(){
+    return this.http.get<any[]>('https://localhost:7131/api/Group')
+  }
+  getAllPersons(){
+    return this.http.get<any[]>('https://localhost:7131/getAllPersons')
+  }
 }
-

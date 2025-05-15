@@ -1,0 +1,14 @@
+<div class="container" onload="console.log(group.id + ' Loaded fully')">
+    <button (click)="deleteGroup(group.id)"><mat-icon>delete</mat-icon></button>
+    <button (click)="addRow(group.id)"><mat-icon>add</mat-icon></button>
+    <button (click)="addGroup(group.parentId[0])"><mat-icon>G</mat-icon></button>
+    <button (click)="addChildGroup(group.id)"><mat-icon>N</mat-icon></button>
+    <label>{{index}}</label>
+    <div>
+    <app-members-table [members]=members/>
+    <div>
+        @for (group of docs; track $index) {
+            <app-new-group [group]=group [parentGroups]=docs [index]="index+'.'+($index+1)" [getGroupsByParentId]="getGroupsByParentId" [data]="data"/>
+        }
+    </div>
+</div>

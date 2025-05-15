@@ -1,0 +1,29 @@
+
+table{
+    border: 1px solid black;
+}
+td{
+    vertical-align: top;
+}
+small{
+    color: red;
+}
+input{
+    padding: 8px;
+}
+mat-icon{
+    color: #005cbb;
+}
+mat-select{
+    border: 1px solid black;
+    height: 33px;
+    width: 150px;
+    display: flex;
+    padding-inline: 8px;
+}
+::ng-deep .mat-option{
+    background-color: #f00;
+}
+.no-checkmark .mat-pseudo-checkbox{
+    display: none !important;
+}

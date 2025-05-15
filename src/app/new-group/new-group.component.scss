@@ -1,0 +1,13 @@
+.container {
+    margin: 8px;
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0 0 0.1rem blue;
+}
+button{
+    padding: 0;
+    height: 35px;
+}
+mat-icon{
+    color: #005cbb;
+}

@@ -1,6 +1,7 @@
 <mat-icon (click)="addGroup(0)">add</mat-icon>
 <mat-icon (click)="initialize()">clear</mat-icon>
 <mat-icon (click)="validateData()">done_outline</mat-icon>
+
 @for (group of data; track $index) {
     <app-group [groupIndex]=$index [group]=group 
         [trigger]=trigger
@@ -11,7 +12,7 @@
 }
 
 <button (click)="stringAPIData()">API CALL</button>
-<button (click)="dataService.getPersonsByGroupId(2)">getPersonsByGroupId</button>
+<button (click)="dataService.getPersonsByGroupId(1)">GetPersonsByGroupId</button>
 <pre>
     {{ stringifyData(APIData) }}
 </pre>
@@ -23,6 +24,10 @@
     {{ group }}
 }
 <hr/>
-<pre>
-    {{ stringifyData(dataService.persons) }}
-</pre>
+<hr/>
+<button (click)="addGroup(0)"><mat-icon>add</mat-icon></button>
+<button (click)="clearData()"><mat-icon>clear</mat-icon></button>
+<button (click)="saveData()"><mat-icon>done_outline</mat-icon></button>
+@for (group of groups; track $index) {
+    <app-new-group [group]=group [parentGroups]=groups [index]=($index+1).toString() [getGroupsByParentId]=getGroupsByParentId [data]="data"/>
+}

@@ -30,10 +30,17 @@ td{
 select{
     width: 100%;
     box-sizing: border-box;
+    padding: 8px;
 }
 small{
     color: red;
 }
-select{
-    padding: 8px;
+mat-select{
+    border: 1px solid black;
+    height: 33px;
+    width: 150px;
+    display: flex;
+}
+::ng-deep .mat-option{
+    background-color: #f003;
 }

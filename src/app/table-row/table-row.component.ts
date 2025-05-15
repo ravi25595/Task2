@@ -2,11 +2,11 @@ import { Component, Input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { FormGroup, FormsModule } from '@angular/forms'; // ✅ 
 import { NgClass } from '@angular/common';
-import { MatOption, MatSelect } from '@angular/material/select';
+import { MatFormField, MatLabel, MatOption, MatSelect } from '@angular/material/select';
 
 @Component({
   selector: 'app-table-row',
-  imports: [MatIconModule,FormsModule, NgClass],
+  imports: [MatIconModule,FormsModule, NgClass,MatSelect, MatOption],
   templateUrl: './table-row.component.html',
   styleUrl: './table-row.component.scss'
 })
